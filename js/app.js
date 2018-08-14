@@ -1,18 +1,42 @@
-/*
- * Create a list that holds all of your cards
- */
+
+ //CREATE A LIST OF ALL THE CARDS //
+
+let cardsArray = [];
+const allCards = document.querySelector('.deck');
+console.log(allCards);
+const elements = allCards.getElementsByClassName('card');
+console.log(elements);
+
+const [...index] = elements;
+
+for (cards of index){
+    cards.classList.add('show');
+    cards.classList.remove('open');
+    cards.classList.remove('match');
+    cardsArray.push(cards);
+}
+console.log(cardsArray);
+
+// CLICK EVENT ON REFRESH ICON TO SHUFFLE CARDS AND RETURN NEW ARRAY //
+const r = document.querySelector('.restart');
+const refresh = r.firstElementChild;
 
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+refresh.addEventListener('click', function(){
+    let shuffled = shuffle(cardsArray);
+    let newCardsArray = [];
+    newCardsArray = shuffled;
+    cardsArray = [];
+    cardsArray = newCardsArray;
+    console.log(cardsArray);
+});
+
+//LOOP THROUGH CARDS AND CREATE EACH HTML //
+// ADD EACH CARDS HTML TO THE PAGE //
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -20,9 +44,13 @@ function shuffle(array) {
         temporaryValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
+
     }
 
     return array;
+
+
+
 }
 
 
