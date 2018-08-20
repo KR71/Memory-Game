@@ -2,13 +2,13 @@
 let toggledCards = [];
 const deck = document.querySelector('.deck');
 let moves = 0;
+let matched = 0;
+const totalPairs = 8;
 
-(function start() {
-    const cards = document.querySelectorAll('.deck li');
-    for (let card of cards) {
-        card.className = 'card';
-    }
-})();
+//START THE GAME AFTER RELOADING THE PAGE
+window.onbeforeunload = resetGame();
+//TODO: WORK OUT HOW TO GET ALL STARS TO SHOW AFTER INITIAL RELAOD
+//TODO: WORKS WHEN CLICK REFRESH BUTTON BUT NOT HERE??
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -85,15 +85,18 @@ function addToggledCards(clickedTarget) {
 // CHECK FOR MATCHED CARDS PUSHED TO TOGGLED CARDS
 function matchCheck () {
     if ( toggledCards[0].firstElementChild.className === toggledCards[1].firstElementChild.className) {
-
-
+        
         toggledCards[0].classList.toggle('match');
         toggledCards[1].classList.toggle('match');
         toggledCards = [];
+        matched++;
+        if(matched === totalPairs) {
+            gameOver()
+        }
 
     } else {
         setTimeout(() => {
-            console.log('Not a match');
+
             toggleCards(toggledCards[0]);
             toggleCards(toggledCards[1]);
             toggledCards = [];
@@ -101,6 +104,19 @@ function matchCheck () {
         }, 1500);
 
     }
+}
+
+//  FUNCTION TO CALL WHEN THE GAME IS OVER
+function gameOver () {
+    modalStats();
+    toggleModal();
+}
+
+// FUNCTION TO REPLY GAME
+
+function replayGame () {
+    resetGame();
+    toggleModal();
 }
 
 //FUNCTION TO ADD THE MOVES MADE IN THE GAME
@@ -146,7 +162,7 @@ function modalStats() {
     const stars = getStars();
 
     moveStats.innerHTML = `Moves = ${moves}`;
-    starStats.innerHTML = `Moves = ${moves}`;
+    starStats.innerHTML = `Stars = ${stars}`;
 }
 
 //FUNCTION TO GET STARS FOR MODAL STATS MODAL
@@ -161,15 +177,50 @@ function getStars() {
     return starTotal;
 }
 
+//FUNCTION TO RESET THE MOVES MADE IN A GAME
+function resetMoves () {
+    moves = 0;
+    document.querySelector('.moves').innerHTML = moves;
+}
+
+//FUNCTION TO RESET STARS IN THE GAME
+function resetStars () {
+    let stars = 0;
+    const starsList = document.querySelectorAll('.stars li');
+    for (star of starsList) {
+        star.style.display = 'inline';
+    }
+}
+
+// FUNCTION TO RESET THE GAME COMPLETELY CALLING ALL OF THE ABOVE FUNCTIONS
+function resetGame () {
+    resetMoves();
+    resetStars();
+    shuffleCards();
+    resetCards();
+
+}
+
+//CREATE FUNCTION LINKED TO RESET BUTTON AND CALLING RESET GAME FUNCTION
+document.querySelector('.restart i').addEventListener('click', resetGame);
+
+//REPLAY BUTTON IN MODAL FUNCTION
+document.querySelector('.modal_replay').addEventListener('click', replayGame);
+
+
 //CANCEL BUTTON IN MODAL FUNCTION
 document.querySelector('.modal_cancel').addEventListener('click', () => {
    toggleModal();
 });
 
-//REPLAY BUTTON IN MODAL FUNCTION
-document.querySelector('.modal_replay').addEventListener('click', () => {
-   //TODO: CALL RESET GAME HERE
-});
+function resetCards () {
+    const cards = document.querySelectorAll('.deck li');
+    for (let card of cards) {
+        card.className = 'card';
+    }
+}
+
+
 
 /*
  * set up the event listener for a card. If a card is clicked:

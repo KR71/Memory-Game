@@ -115,6 +115,7 @@ h1 {
     height: 100%;
     width: 100%;
     background: rgba(0,0,0,0.438);
+    z-index: 100;
 
 
 }
