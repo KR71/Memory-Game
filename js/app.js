@@ -5,10 +5,7 @@ let moves = 0;
 let matched = 0;
 const totalPairs = 8;
 
-//START THE GAME AFTER RELOADING THE PAGE
-window.onbeforeunload = resetGame();
-//TODO: WORK OUT HOW TO GET ALL STARS TO SHOW AFTER INITIAL RELAOD
-//TODO: WORKS WHEN CLICK REFRESH BUTTON BUT NOT HERE??
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -185,7 +182,7 @@ function resetMoves () {
 
 //FUNCTION TO RESET STARS IN THE GAME
 function resetStars () {
-    let stars = 0;
+    //let stars = 0;
     const starsList = document.querySelectorAll('.stars li');
     for (star of starsList) {
         star.style.display = 'inline';
@@ -200,6 +197,13 @@ function resetGame () {
     resetCards();
 
 }
+
+
+//START THE GAME AFTER RELOADING THE PAGE
+window.onbeforeunload = resetGame();
+//TODO: WORK OUT HOW TO GET ALL STARS TO SHOW AFTER INITIAL RELAOD
+//TODO: WORKS WHEN CLICK REFRESH BUTTON BUT NOT HERE??
+// JUST HAD TO MOVE THIS DOWN FROM THE TOP OF THE PAGE TO HERE AFTER THE RESET GAME FUNCTION!!!
 
 //CREATE FUNCTION LINKED TO RESET BUTTON AND CALLING RESET GAME FUNCTION
 document.querySelector('.restart i').addEventListener('click', resetGame);
