@@ -4,8 +4,9 @@ const deck = document.querySelector('.deck');
 let moves = 0;
 let matched = 0;
 const totalPairs = 8;
-
-
+let clockOff = true;
+let time = 0;
+let clockId;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -48,6 +49,10 @@ shuffleCards();
 deck.addEventListener('click', event => {
    const clickedTarget = event.target;
    if (isClicked(clickedTarget)) {
+       if (clockOff) {
+           startClock();
+           clockOff = false;
+       }
        toggleCards(clickedTarget);
        addToggledCards(clickedTarget);
        if (toggledCards.length === 2) {
@@ -107,6 +112,7 @@ function matchCheck () {
 function gameOver () {
     modalStats();
     toggleModal();
+    stopClock();
 }
 
 // FUNCTION TO REPLY GAME
@@ -143,6 +149,39 @@ function removeStar(){
 removeStar();
 removeStar();
 
+// CLOCK FUNCTIONS AND FUNCTIONING
+
+function startClock () {
+
+        clockId = setInterval(() => {
+        time++;
+        showTime();
+        console.log(time)
+    }, 1000);
+
+}
+
+
+
+function showTime () {
+    const clock = document.querySelector('.clock');
+
+    //ADD TO CREATE LOGIC FOR CLOCK BY SPLITTING INTO MINUTES AND SECONDS
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+   // LOGIC TO KEEP SECONDS WITH 0 IN FRONT UNTIL TIME HITS 10 SECONDS
+    if (seconds < 10 ) {
+        clock.innerHTML = `${minutes}:0${seconds}`;
+    } else {
+        clock.innerHTML = `${minutes}:${seconds}`;
+    }
+}
+
+// STOP THE CLOCK FUNCTION
+function stopClock () {
+    clearInterval(clockId);
+}
+
 
 // END OF GAME MODAL POP UP FUNCTIONALITY
 //FUNCTION TO TOGGLE HIDE ON STATS MODAL AT END OF GAME
@@ -154,10 +193,14 @@ toggleModal(); // OPENS STATS MODAL
 toggleModal(); // CLOSES STATS MODAL
 
 function modalStats() {
+
+    const timeStats = document.querySelector('.modal_time');
+    const clockTime = document.querySelector('.clock').innerHTML;
     const moveStats = document.querySelector('.modal_moves');
     const starStats = document.querySelector('.modal_stars');
     const stars = getStars();
 
+    timeStats.innerHTML = `Time = ${clockTime}`;
     moveStats.innerHTML = `Moves = ${moves}`;
     starStats.innerHTML = `Stars = ${stars}`;
 }
@@ -189,8 +232,18 @@ function resetStars () {
     }
 }
 
+// FUNCTION TO RESET CLOCK IN THE GAME
+function resetClockAndTime() {
+    stopClock();
+    clockOff = true;
+    time = 0;
+    showTime();
+
+}
+
 // FUNCTION TO RESET THE GAME COMPLETELY CALLING ALL OF THE ABOVE FUNCTIONS
 function resetGame () {
+    resetClockAndTime();
     resetMoves();
     resetStars();
     shuffleCards();
@@ -198,12 +251,12 @@ function resetGame () {
 
 }
 
-
-//START THE GAME AFTER RELOADING THE PAGE
-window.onbeforeunload = resetGame();
-//TODO: WORK OUT HOW TO GET ALL STARS TO SHOW AFTER INITIAL RELAOD
-//TODO: WORKS WHEN CLICK REFRESH BUTTON BUT NOT HERE??
-// JUST HAD TO MOVE THIS DOWN FROM THE TOP OF THE PAGE TO HERE AFTER THE RESET GAME FUNCTION!!!
+function resetCards () {
+    const cards = document.querySelectorAll('.deck li');
+    for (let card of cards) {
+        card.className = 'card';
+    }
+}
 
 //CREATE FUNCTION LINKED TO RESET BUTTON AND CALLING RESET GAME FUNCTION
 document.querySelector('.restart i').addEventListener('click', resetGame);
@@ -214,15 +267,17 @@ document.querySelector('.modal_replay').addEventListener('click', replayGame);
 
 //CANCEL BUTTON IN MODAL FUNCTION
 document.querySelector('.modal_cancel').addEventListener('click', () => {
-   toggleModal();
+    toggleModal();
 });
+//START THE GAME AFTER RELOADING THE PAGE
+window.onbeforeunload = resetGame();
+//TODO: WORK OUT HOW TO GET ALL STARS TO SHOW AFTER INITIAL RELAOD
+//TODO: WORKS WHEN CLICK REFRESH BUTTON BUT NOT HERE??
+// JUST HAD TO MOVE THIS DOWN FROM THE TOP OF THE PAGE TO HERE AFTER THE RESET GAME FUNCTION!!!
 
-function resetCards () {
-    const cards = document.querySelectorAll('.deck li');
-    for (let card of cards) {
-        card.className = 'card';
-    }
-}
+
+
+
 
 
 
