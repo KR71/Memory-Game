@@ -55,17 +55,23 @@ deck.addEventListener('click', event => {
        }
        toggleCards(clickedTarget);
        addToggledCards(clickedTarget);
+
        if (toggledCards.length === 2) {
            matchCheck(clickedTarget);
+           //ALWAYS CHECKS TO SEE IF GAME IS OVER BEFORE ADDING MOVES AS WAS ADDING MOVE AFTER GAME FINISHED BEFORE
+           if(matched === totalPairs){
+
+           } else {
            addMoves();
            checkScore();
+           }
        }
 
    }
 
 });
 
-//CLICKED FUNCTION TO CHECK CARD, LENTGH 2 AND DOESN'T ALREADY EXIST SET UP IN IF STATEMENT IN DECK LISTENER
+//CLICKED FUNCTION TO CHECK CARD, ARRAY LENGTH < 2 AND DOESN'T ALREADY EXIST SET UP IN IF STATEMENT IN DECK LISTENER
 function isClicked(clickedTarget){
     return(
     clickedTarget.classList.contains('card') && toggledCards.length < 2 && !toggledCards.includes(clickedTarget)
@@ -74,8 +80,25 @@ function isClicked(clickedTarget){
 
 //TOGGLE CLASSES OPEN AND SHOW
 function toggleCards(clickedTarget) {
+
+
     clickedTarget.classList.toggle('open');
     clickedTarget.classList.toggle('show');
+
+
+
+}
+
+//FUNCTION TO TOGGLE UNMATCHED CLASS
+function unMatchedToggle (clickedTarget) {
+    clickedTarget.classList.toggle('Nomatch');
+
+}
+
+//FUNCTION TO TOGGLE UNMATCHED CLASS
+function unMatchedToggleOff (clickedTarget) {
+    clickedTarget.classList.toggle('Nomatch');
+
 }
 
 //ADD TOGGLED CARDS TO TOGGLE CARD ARRAY
@@ -93,15 +116,39 @@ function matchCheck () {
         toggledCards = [];
         matched++;
         if(matched === totalPairs) {
+            debugger;
             gameOver()
         }
 
+
+
     } else {
+
+
+        unMatchedToggle(toggledCards[0]);
+
+        unMatchedToggle(toggledCards[1]);
+
         setTimeout(() => {
 
+            // debugger;
             toggleCards(toggledCards[0]);
             toggleCards(toggledCards[1]);
+
+            unMatchedToggle(toggledCards[0]);
+
+            unMatchedToggle(toggledCards[1]);
+
+
+
+
+
+
+
+
+
             toggledCards = [];
+
 
         }, 1500);
 
@@ -110,6 +157,7 @@ function matchCheck () {
 
 //  FUNCTION TO CALL WHEN THE GAME IS OVER
 function gameOver () {
+
     modalStats();
     toggleModal();
     stopClock();
@@ -156,12 +204,10 @@ function startClock () {
         clockId = setInterval(() => {
         time++;
         showTime();
-        console.log(time)
+
     }, 1000);
 
 }
-
-
 
 function showTime () {
     const clock = document.querySelector('.clock');
@@ -207,7 +253,7 @@ function modalStats() {
 
 //FUNCTION TO GET STARS FOR MODAL STATS MODAL
 function getStars() {
-    stars = document.querySelectorAll('stars li');
+    stars = document.querySelectorAll('.stars li');
     starTotal = 0;
     for(star of stars) {
         if(star.style.display !== 'none') {

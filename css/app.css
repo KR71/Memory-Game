@@ -1,3 +1,8 @@
+
+
+
+
+
 html {
     box-sizing: border-box;
 }
@@ -83,6 +88,12 @@ h1 {
     font-size: 33px;
 }
 
+.deck .card.Nomatch {
+    cursor: default;
+    background: red;
+    font-size: 33px;
+}
+
 /*
  * Styles for the Score Panel
  */
@@ -91,7 +102,11 @@ h1 {
     text-align: left;
     width: 345px;
     margin-bottom: 10px;
-    text-s: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 5px;
+    padding:15px;
 }
 
 .score-panel .stars {
@@ -119,6 +134,7 @@ h1 {
     width: 100%;
     background: rgba(0,0,0,0.438);
     z-index: 100;
+    color: black;
 
 
 }
