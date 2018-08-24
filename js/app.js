@@ -116,7 +116,7 @@ function matchCheck () {
         toggledCards = [];
         matched++;
         if(matched === totalPairs) {
-            debugger;
+
             gameOver()
         }
 
