@@ -12,8 +12,6 @@ let clockId;
 function shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
 
-
-
     while (0 !== currentIndex) {
 
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -26,13 +24,9 @@ function shuffle(array) {
     }
 
     return array;
-
-
-
 }
 
 //SHUFFLE CARDS AND ADD TO DECK ARRAY
-
 function shuffleCards () {
     //CREATES AN ARRAY FROM THE NODE LIST, NEED AN ARRAY FOR SHUFFLE FUNCTION, NODELIST IS IMMUTABLE
     const cardsForShuffle = Array.from(document.querySelectorAll('.deck li'));
@@ -41,11 +35,9 @@ function shuffleCards () {
         deck.appendChild(card);
     }
 }
-
 shuffleCards();
 
 //SET UP EVENT LISTENER FOR EACH CARD
-
 deck.addEventListener('click', event => {
    const clickedTarget = event.target;
    if (isClicked(clickedTarget)) {
@@ -81,12 +73,8 @@ function isClicked(clickedTarget){
 //TOGGLE CLASSES OPEN AND SHOW
 function toggleCards(clickedTarget) {
 
-
     clickedTarget.classList.toggle('open');
     clickedTarget.classList.toggle('show');
-
-
-
 }
 
 //FUNCTION TO TOGGLE UNMATCHED CLASS
@@ -116,39 +104,23 @@ function matchCheck () {
         toggledCards = [];
         matched++;
         if(matched === totalPairs) {
-
             gameOver()
         }
 
-
-
     } else {
 
-
         unMatchedToggle(toggledCards[0]);
-
         unMatchedToggle(toggledCards[1]);
 
         setTimeout(() => {
-
             // debugger;
             toggleCards(toggledCards[0]);
             toggleCards(toggledCards[1]);
 
             unMatchedToggle(toggledCards[0]);
-
             unMatchedToggle(toggledCards[1]);
 
-
-
-
-
-
-
-
-
             toggledCards = [];
-
 
         }, 1000);
 
@@ -164,7 +136,6 @@ function gameOver () {
 }
 
 // FUNCTION TO REPLY GAME
-
 function replayGame () {
     resetGame();
     toggleModal();
@@ -198,7 +169,6 @@ removeStar();
 removeStar();
 
 // CLOCK FUNCTIONS AND FUNCTIONING
-
 function startClock () {
 
         clockId = setInterval(() => {
@@ -319,21 +289,3 @@ document.querySelector('.modal_cancel').addEventListener('click', () => {
 window.onbeforeunload = resetGame();
 //TODO: WORK OUT HOW TO GET ALL STARS TO SHOW AFTER INITIAL RELAOD
 //TODO: WORKS WHEN CLICK REFRESH BUTTON BUT NOT HERE??
-// JUST HAD TO MOVE THIS DOWN FROM THE TOP OF THE PAGE TO HERE AFTER THE RESET GAME FUNCTION!!!
-
-
-
-
-
-
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
