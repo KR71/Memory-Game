@@ -84,14 +84,19 @@ h1 {
 
 .deck .card.match {
     cursor: default;
-    background: #02ccba;
+    background: #3bff5f;
     font-size: 33px;
+    animation-name: rubberBand;
+    animation-duration: .75s;
+
 }
 
 .deck .card.Nomatch {
     cursor: default;
     background: red;
     font-size: 33px;
+    animation-name: pulse;
+    animation-duration: .75s;
 }
 
 /*
@@ -178,4 +183,25 @@ h1 {
 
 .hide {
     display: none;
+}
+
+@keyframes rubberBand {
+    0% {transform: scale(1);}
+    30% {transform: scaleX(1.25) scaleY(0.75);}
+    40% {transform: scaleX(0.75) scaleY(1.25);}
+    60% {transform: scaleX(1.15) scaleY(0.85);}
+    100% {transform: scale(1);}
+}
+.rubberBand {
+    animation-name: rubberBand;
+}
+
+@keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.1);}
+    100% {transform: scale(1);}
+}
+.pulse {
+    animation-name: pulse;
+    animation-duration: 1s;
 }

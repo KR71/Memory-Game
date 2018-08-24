@@ -150,7 +150,7 @@ function matchCheck () {
             toggledCards = [];
 
 
-        }, 1500);
+        }, 1000);
 
     }
 }
