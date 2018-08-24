@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2cebed76-3695-4aa5-87a7-893ee3363a38" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,7 +19,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-103">
+            <state relative-caret-position="297">
               <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
@@ -47,8 +46,8 @@
       <file leaf-file-name="app.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="89" column="28" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
+            <state relative-caret-position="488">
+              <caret line="174" column="18" lean-forward="true" selection-start-line="174" selection-start-column="18" selection-end-line="174" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -169,12 +168,12 @@
       <updated>1534194046525</updated>
       <workItem from="1534194061790" duration="39272000" />
       <workItem from="1534797038951" duration="18068000" />
-      <workItem from="1535044683301" duration="5675000" />
+      <workItem from="1535044683301" duration="7615000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63015000" />
+    <option name="totallyTimeSpent" value="64955000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="559" y="25" width="986" height="1128" extended-state="0" />
@@ -274,13 +273,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-103">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
@@ -288,10 +280,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="89" column="28" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
+        <state relative-caret-position="488">
+          <caret line="174" column="18" lean-forward="true" selection-start-line="174" selection-start-column="18" selection-end-line="174" selection-end-column="18" />
         </state>
       </provider>
     </entry>
