@@ -2,7 +2,6 @@
 
 
 
-
 html {
     box-sizing: border-box;
 }
@@ -84,7 +83,7 @@ h1 {
 
 .deck .card.match {
     cursor: default;
-    background: #3bff5f;
+    background: #3bff5f78;
     font-size: 33px;
     animation-name: rubberBand;
     animation-duration: .75s;
@@ -103,6 +102,13 @@ h1 {
  * Styles for the Score Panel
  */
 
+
+.score-panel {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .score-panel {
     text-align: left;
     width: 345px;
@@ -119,6 +125,7 @@ h1 {
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
+    color: yellow;
 }
 
 .score-panel .stars li {
@@ -126,9 +133,20 @@ h1 {
     display: inline-block;
 }
 
+.score-panel .moves{
+
+    margin-right: -28px;
+}
+
+.score-panel .clock{
+
+    margin-left: -28px;
+}
+
 .score-panel .restart {
     float: right;
     cursor: pointer;
+    margin-right: -19px;
 }
 
 .modal {
@@ -150,7 +168,7 @@ h1 {
     top: 50%;
     left: 50%;
     background: #35b9da;
-    transform: translate(-50%, -87%);
+    transform: translate(-50%, -53%);
 
 
 }
@@ -174,19 +192,52 @@ h1 {
 .modal_stats {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 1rem;
     border-bottom: 1px solid gray;
     font-size: 25px;
+}
+
+.modal_time {
+    margin-left: -5px;
+}
+
+.modal_moves {
+    margin-right: -6px;
 }
 .modal_buttons {
     display:flex;
     justify-content: space-around;
     padding: 1rem;
 }
-.modal_button {
-    width: 60px;
-    height: 30px;
+.modal_cancel {
+    width: 76px;
+    height: 33px;
+    background-color: #af0606;
+    border: none;
+    color: white;
+    padding: 7px 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.modal_replay {
+    width: 76px;
+    height: 33px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 7px 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
 
 .hide {
@@ -212,4 +263,236 @@ h1 {
 .pulse {
     animation-name: pulse;
     animation-duration: 1s;
+}
+
+
+/*
+MEDIA QUERIES
+*/
+
+@media screen and (max-width: 768px) {
+
+    .modal_detail {
+        position: relative;
+        width: 400px;
+        top: 50%;
+        left: 50%;
+        background: #35b9da;
+        transform: translate(-50%, -80%);
+    }
+
+    .modal_stats {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem;
+        border-bottom: 1px solid gray;
+        font-size: 20px;
+    }
+    .modal_shut {
+        font-weight: bold;
+        font-size: 20PX;
+    }
+
+    .modal_cancel {
+        width: 80PX;
+        height: 30px;
+        background-color: #af0606;
+        border: none;
+        color: white;
+        padding: 6px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .modal_replay {
+        width: 80px;
+        height: 30px;
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 6px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .deck {
+        width: 250px;
+        min-height: 250px;
+        padding: 15px;
+    }
+
+    .deck .card {
+        height: 50px;
+        width: 50px;
+    }
+
+    .score-panel {
+        text-align: left;
+        width: 250px;
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+    .header {
+        font-size: 15px;
+    }
+    .deck .card.show {
+        font-size: 20px;
+    }
+    .deck .card.Nomatch {
+        font-size: 20px;
+    }
+    .deck .card.match {
+        font-size: 20px;
+
+    }
+    .score-panel .moves{
+
+        margin-right: -12px;
+    }
+
+    .score-panel .clock{
+
+        margin-left: -14px;
+    }
+    .modal_detail {
+        font-size: 8px;
+        position: relative;
+        width: 250px;
+        top: 50%;
+        left: 50%;
+        background: #35b9da;
+        transform: translate(-50%, -268%);
+        display: flex;
+        justify-items: auto;
+    }
+    .modal_title {
+        font-weight: 95;
+        font-size: 15px;
+        width: 150px;
+        margin-bottom: 73px;
+    }
+    .modal_shut {
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 72px;
+        margin-left: 57px;
+    }
+    .modal_stats {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem;
+        border-bottom: 1px solid gray;
+        font-size: 10px;
+        margin-top: 22px;
+        margin-left: -210px;
+    }
+    .modal_time {
+        margin-left: -43px;
+        margin-right: 9px;
+    }
+
+    .modal_stars {
+        margin-left: 18px;
+    }
+
+    .modal_moves {
+        margin-right: -6px;
+        margin-left: 30px;
+    }
+    .modal_buttons {
+        display: flex;
+        justify-content: space-around;
+        padding: 1rem;
+        margin-top: 40px;
+        margin-left: -179px;
+    }
+
+
+    .modal_cancel {
+        width: 38px;
+        height: 20px;
+        background-color: #af0606;
+        border: none;
+        color: white;
+        padding-right: 20px;
+        padding-left: 4px;
+        padding-top: 4px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 9px;
+    }
+
+    .modal_replay {
+        width: 38px;
+        height: 20px;
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding-right: 3px;
+        padding-left: 4px;
+        padding-top: 4px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 9px;
+        margin-left: 38px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+
+    .modal_detail {
+        font-size: 8px;
+        position: relative;
+        width: 250px;
+        top: 50%;
+        left: 50%;
+        background: #35b9da;
+        transform: translate(-50%, -269%);
+        display: flex;
+        justify-items: auto;
+    }
+    .modal_cancel {
+        width: 38px;
+        height: 16px;
+        background-color: #af0606;
+        border: none;
+        color: white;
+        padding-right: 5px;
+        padding-left: 4px;
+        padding-top: 3px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 8px;
+    }
+
+    .modal_replay {
+        width: 38px;
+        height: 16px;
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding-right: 5px;
+        padding-left: 4px;
+        padding-top: 3px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 8px;
+        margin-left: 38px;
+    }
 }
