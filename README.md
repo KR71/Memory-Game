@@ -17,9 +17,6 @@ The game loads instantly to play, once you click your first reveal a timer will 
 None
 ```
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
