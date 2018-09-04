@@ -2,7 +2,7 @@
 
 A course project to create a memory game for the Udacity nano-degree
 
-![](images/GameScreen.png)
+![](img/GameScreen.png)
 
 
 ## Getting Started
