@@ -2,6 +2,7 @@
 
 A course project to create a memory game for the Udacity nano-degree
 
+
 ## Getting Started
 
 The game loads instantly to play, once you click your first reveal a timer will start, you have a number of moves within a given time frame to match symbols
